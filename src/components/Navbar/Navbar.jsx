@@ -3,6 +3,7 @@ import { MdMenu } from 'react-icons/md';
 import { Link, NavLink } from 'react-router-dom';
 import './Navbar.css';
 import ThemeController from '../ThemeController';
+import logo from '../../assets/logo.png';
 const Navbar = () => {
     const user = null;
     const navItems = <>
@@ -23,7 +24,9 @@ const Navbar = () => {
                         {navItems}
                     </ul>
                 </div>
+                <img src={logo} alt="Urban Foodies" className='w-14'/>
                 <Link to={'/'} className="text-xl md:text-3xl font-extrabold text-slate-800 dark:text-white">Urban <span className='text-orange-600'>Foodies</span></Link>
+
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1 space-x-1 menu-items">
