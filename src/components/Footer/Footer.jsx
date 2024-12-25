@@ -3,7 +3,7 @@ import React from 'react';
 const Footer = () => {
     return (
         <div className='bg-orange-100 dark:bg-slate-900 dark:text-white p-5'>
-            <div className="grid sm:grid-cols-3 p-5 gap-5 md:grid-cols-4">
+            <div className="grid sm:grid-cols-3 p-5 gap-5 md:grid-cols-4 container mx-auto">
                 <aside className='sm:col-span-3 md:col-span-1'>
                     <svg
                         width="50"

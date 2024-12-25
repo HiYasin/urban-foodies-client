@@ -1,9 +1,101 @@
-import React from 'react';
+
+import { FcGoogle } from "react-icons/fc";
+import register from '../assets/register.json';
+import Lottie from 'lottie-react';
+import { Link } from "react-router-dom";
+
+import Swal from 'sweetalert2'
 
 const Register = () => {
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        //const formData = new FormData(e.target);
+        //const data = Object.fromEntries(formData);
+        const password = e.target.password.value;
+        console.log(password);
+        const passwordErrors = passwordValidation(password);
+        if (passwordErrors.length > 0) {
+            Swal.fire({
+                title: 'Password Invalid',
+                html: `<ul>${passwordErrors.join('')}</ul>`, // Join errors into a single string
+                icon: 'error',
+                confirmButtonText: 'Try Again'
+            });
+        }
+        console.log(passwordErrors);
+    }
+    const passwordValidation = (password) => {
+        const errors = [];
+
+        // Check for at least one uppercase letter
+        if (!/[A-Z]/.test(password)) {
+            errors.push('<li>Use at least one uppercase letter.</li>');
+        }
+
+        // Check for at least one lowercase letter
+        if (!/[a-z]/.test(password)) {
+            errors.push('<li>Use at least one lowercase letter.</li>');
+        }
+
+        // Check for minimum length of 6
+        if (password.length < 6) {
+            errors.push('<li>Minimum length of 6 characters.</li>');
+        }
+
+        return errors;
+    };
+
+
     return (
-        <div>
-            Register
+        <div className='border w-10/12 max-w-screen-lg mx-auto rounded-2xl my-20 shadow-xl bg-orange-100'>
+            <div className='grid p-5 md:grid-cols-2 md:p-10'>
+                <div className='w-[50%] md:w-auto mx-auto my-auto'>
+                    <Lottie animationData={register}></Lottie>
+                </div>
+                <div className='mx-5 md:mx-10 lg:mx-20'>
+                    <h2 className='text-3xl font-bold text-center'>Register</h2>
+                    <div>
+                        <form onSubmit={handleSubmit}>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Name</span>
+                                </label>
+                                <input type="text" name="name" className="input input-bordered" />
+                            </div>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Email</span>
+                                </label>
+                                <input type="email" name="email" className="input input-bordered" />
+                            </div>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Photo URL</span>
+                                </label>
+                                <input type="text" name="photo_url" className="input input-bordered" />
+                            </div>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Password</span>
+                                </label>
+                                <input type="password" name="password" className="input input-bordered" />
+                            </div>
+                            <div className="form-control mt-6">
+                                <button className="btn bg-orange-600 text-white border-none">Register</button>
+                            </div>
+                            <div className='text-center py-3'>
+                                <span className="label-text">Already have an account? <Link to={'/login'} className='text-orange-600 font-bold'>Login</Link> </span>
+                            </div>
+                        </form>
+                    </div>
+                    <div>
+                        <div className="divider font-semibold">OR</div>
+                        <div className='flex justify-center pt-5'>
+                            <button className='btn text-white bg-black'><FcGoogle className='text-xl' /> Continue with Google</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };
