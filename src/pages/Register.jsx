@@ -47,36 +47,36 @@ const Register = () => {
 
 
     return (
-        <div className='border w-10/12 max-w-screen-lg mx-auto rounded-2xl my-20 shadow-xl bg-orange-100'>
+        <div className='w-10/12 max-w-screen-lg mx-auto rounded-2xl my-20 shadow-xl bg-orange-100 dark:bg-orange-600 dark:bg-opacity-50 '>
             <div className='grid p-5 md:grid-cols-2 md:p-10'>
                 <div className='w-[50%] md:w-auto mx-auto my-auto'>
                     <Lottie animationData={register}></Lottie>
                 </div>
                 <div className='mx-5 md:mx-10 lg:mx-20'>
-                    <h2 className='text-3xl font-bold text-center'>Register</h2>
+                    <h2 className='text-3xl font-bold text-center dark:text-white'>Register</h2>
                     <div>
                         <form onSubmit={handleSubmit}>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Name</span>
+                                    <span className="label-text dark:text-white">Name</span>
                                 </label>
                                 <input type="text" name="name" className="input input-bordered" />
                             </div>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Email</span>
+                                    <span className="label-text dark:text-white">Email</span>
                                 </label>
                                 <input type="email" name="email" className="input input-bordered" />
                             </div>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Photo URL</span>
+                                    <span className="label-text dark:text-white">Photo URL</span>
                                 </label>
                                 <input type="text" name="photo_url" className="input input-bordered" />
                             </div>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Password</span>
+                                    <span className="label-text dark:text-white">Password</span>
                                 </label>
                                 <input type="password" name="password" className="input input-bordered" />
                             </div>
@@ -84,12 +84,12 @@ const Register = () => {
                                 <button className="btn bg-orange-600 text-white border-none">Register</button>
                             </div>
                             <div className='text-center py-3'>
-                                <span className="label-text">Already have an account? <Link to={'/login'} className='text-orange-600 font-bold'>Login</Link> </span>
+                                <span className="label-text dark:text-white">Already have an account? <Link to={'/login'} className='text-orange-600 font-bold'>Login</Link> </span>
                             </div>
                         </form>
                     </div>
                     <div>
-                        <div className="divider font-semibold">OR</div>
+                        <div className="divider font-semibold dark:text-white divider-neutral">OR</div>
                         <div className='flex justify-center pt-5'>
                             <button className='btn text-white bg-black'><FcGoogle className='text-xl' /> Continue with Google</button>
                         </div>
