@@ -8,7 +8,7 @@ const Navbar = () => {
     const user = null;
     const navItems = <>
         <li><NavLink to={'/'}>Home</NavLink></li>
-        <li><NavLink to={'/all_foods'}>All Foods</NavLink></li>
+        <li><NavLink to={'/all-foods'}>All Foods</NavLink></li>
         <li><NavLink to={'/gallery'}>Gallery</NavLink></li>
     </>
     return (
@@ -20,7 +20,7 @@ const Navbar = () => {
                     </div>
                     <ul
                         tabIndex={0}
-                        className="menu menu-sm dropdown-content rounded-box z-[1] mt-3 w-52 p-2 shadow space-y-2 dark:bg-slate-900">
+                        className="menu menu-sm dropdown-content rounded-box z-[1] mt-3 w-52 p-2 shadow space-y-2 bg-base-100 dark:bg-slate-900 text-orange-600 font-bold">
                         {navItems}
                     </ul>
                 </div>
@@ -29,7 +29,7 @@ const Navbar = () => {
 
             </div>
             <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal px-1 space-x-1 menu-items">
+                <ul className="menu menu-horizontal px-1 space-x-1 menu-items text-orange-600 font-bold">
                     {navItems}
                 </ul>
             </div>

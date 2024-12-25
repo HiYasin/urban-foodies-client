@@ -6,10 +6,10 @@ import Footer from '../components/Footer/footer';
 const Main = () => {
     return (
         <>
-            <header className='bg-base-100 dark:bg-slate-900 dark:text-base-100 fixed left-0 right-0 z-50 top-0 shadow-xl m-0 dark:shadow-slate-400/10'>
+            <header className='backdrop-blur-xl dark:text-base-100 fixed left-0 right-0 z-50 top-0 shadow-xl m-0 dark:shadow-slate-300/5 bg-orange-600/20 dark:bg-slate-900/70'>
                 <Navbar></Navbar>
             </header>
-            <main className='py-16 sm:py-20 md:py-28 lg:py-32 dark:bg-slate-800'>
+            <main className='py-20 dark:bg-slate-800 px-[5%]'>
                 <Outlet></Outlet>
             </main>
             <footer className='dark:bg-slate-800'>

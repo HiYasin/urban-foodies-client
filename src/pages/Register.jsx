@@ -47,7 +47,7 @@ const Register = () => {
 
 
     return (
-        <div className='w-10/12 max-w-screen-lg mx-auto rounded-2xl my-20 shadow-xl bg-orange-100 dark:bg-orange-600 dark:bg-opacity-50 '>
+        <div className='w-10/12 max-w-screen-lg mx-auto rounded-2xl my-5 shadow-xl bg-orange-100 dark:bg-orange-600 dark:bg-opacity-50 '>
             <div className='grid p-5 md:grid-cols-2 md:p-10'>
                 <div className='w-[50%] md:w-auto mx-auto my-auto'>
                     <Lottie animationData={register}></Lottie>

@@ -5,6 +5,8 @@ import Main from "../layouts/Main";
 import Home from "../pages/Home";
 import PageNotFound from "../pages/PageNotFound";
 import App from "../App";
+import AllFoods from "../pages/AllFoods";
+import Gallery from "../pages/Gallery";
 
 
 const Router = createBrowserRouter([
@@ -24,6 +26,14 @@ const Router = createBrowserRouter([
       {
         path: "/login",
         element: <Login></Login>
+      },
+      {
+        path: "/all-foods",
+        element:<AllFoods></AllFoods>
+      },
+      {
+        path: "/gallery",
+        element: <Gallery></Gallery>
       },
       {
         path: "/app",

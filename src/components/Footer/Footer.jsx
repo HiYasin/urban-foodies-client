@@ -45,7 +45,7 @@ const Footer = () => {
                 </nav>
 
             </div>
-            <aside className='container bg-orange-600 text-white p-5 text-center mx-auto rounded-box'>
+            <aside className='container bg-orange-600 text-white p-5 mt-5 text-center mx-auto rounded-box'>
                 <p className="dark:text-white font-semibold">Copyright © {new Date().getFullYear()} - All right reserved by Urban Foodies LTD</p>
             </aside>
         </div>

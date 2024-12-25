@@ -3,9 +3,8 @@ import Banner from '../components/Banner/Banner';
 
 const Home = () => {
     return (
-        <div>
+        <div className='py-8'>
             <Banner></Banner>
-            {/* //logo lagaisi nav+footer e , loader change korsi */}
         </div>
     );
 };
