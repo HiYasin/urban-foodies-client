@@ -17,12 +17,12 @@ const FoodCard = ({ food }) => {
                     <h2 className="card-title text-left text-orange-600">{food_name}</h2>
                     <div className='flex gap-3'>
                         <div>
-                            <p className='text-orange-600'><span className='text-white text-bold'>Category:</span> {category? category: 'N/A'}</p>
-                            <p className='text-orange-600'><span className='text-white text-bold'>Origin:</span> {origin? origin: 'N/A'}</p>
+                            <p className='text-orange-600'><span className='text-slate-900 dark:text-white font-bold'>Category:</span> {category? category: 'N/A'}</p>
+                            <p className='text-orange-600'><span className='text-slate-900 dark:text-white font-bold'>Origin:</span> {origin? origin: 'N/A'}</p>
                         </div>
                         <div>
-                            <p className='text-orange-600'><span className='text-white text-bold'>Price:</span> {price? price: 'N/A'}</p>
-                            <p className='text-orange-600'><span className='text-white text-bold'>Quantity:</span> {quantity? quantity: 'N/A'}</p>
+                            <p className='text-orange-600'><span className='text-slate-900 dark:text-white font-bold'>Price:</span> {price? price: 'N/A'}</p>
+                            <p className='text-orange-600'><span className='text-slate-900 dark:text-white font-bold'>Quantity:</span> {quantity? quantity: 'N/A'}</p>
                         </div>
                     </div>
                     <button className="btn border-none text-white bg-orange-600">Detalis</button>
