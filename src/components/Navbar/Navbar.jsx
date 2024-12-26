@@ -4,8 +4,26 @@ import { Link, NavLink } from 'react-router-dom';
 import './Navbar.css';
 import ThemeController from '../ThemeController';
 import logo from '../../assets/logo.png';
+import useAuth from '../../customHooks/useAuth';
+import Swal from 'sweetalert2';
 const Navbar = () => {
-    const user = null;
+    const { user, signOutUser } = useAuth();
+    const handleSignOut = () => {
+        console.log('clicked');
+        signOutUser()
+            .then(() => {
+                console.log('User signed out');
+                Swal.fire({
+                    title: 'LogOut',
+                    text: 'User logged out successfully.',
+                    icon: 'success',
+                    confirmButtonText: 'Ok',
+                    confirmButtonColor: "#ea580c"
+                });
+            })
+            .then(err => console.log(err));
+    }
+
     const navItems = <>
         <li><NavLink to={'/'}>Home</NavLink></li>
         <li><NavLink to={'/all-foods'}>All Foods</NavLink></li>
@@ -24,7 +42,7 @@ const Navbar = () => {
                         {navItems}
                     </ul>
                 </div>
-                <img src={logo} alt="Urban Foodies" className='w-14'/>
+                <img src={logo} alt="Urban Foodies" className='w-14' />
                 <Link to={'/'} className="text-xl md:text-3xl font-extrabold text-slate-800 dark:text-white">Urban <span className='text-orange-600'>Foodies</span></Link>
 
             </div>
@@ -37,7 +55,10 @@ const Navbar = () => {
                 <ThemeController></ThemeController>
                 <div>
                     {
-                        user ? <button className='bg-orange-600 text-white border-none btn-sm'>Logout</button> : <Link to={'/login'} className="btn bg-orange-600 text-white border-none btn-sm">Login</Link>
+                        user ?
+                            <button className='btn bg-orange-600 text-white border-none btn-sm' onClick={handleSignOut}>Logout</button>
+                            :
+                            <Link to={'/login'} className="btn bg-orange-600 text-white border-none btn-sm" >Login</Link>
                     }
                 </div>
             </div>

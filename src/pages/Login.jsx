@@ -2,15 +2,72 @@
 import { FcGoogle } from "react-icons/fc";
 import login from '../assets/login.json';
 import Lottie from 'lottie-react';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import useAuth from '../customHooks/useAuth';
+import { GoogleAuthProvider } from "firebase/auth";
+import Swal from 'sweetalert2'
 
 const Login = () => {
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        const formData = new FormData(e.target);
-        const data = Object.fromEntries(formData);
-        console.log(data);
+    const { googleSign, signInUser } = useAuth();
+    const navigate = useNavigate();
+    const handleSubmit = event => {
+        event.preventDefault();
+        const email = event.target.email.value;
+        const password = event.target.password.value;
+        signInUser(email, password)
+            .then(result => {
+                console.log(result.user);
+                Swal.fire({
+                    title: "Valid Information",
+                    text: "User Logged in Successfully!",
+                    icon: "success",
+                    confirmButtonText: "Ok",
+                    confirmButtonColor: "#ea580c",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        navigate(location?.state ? location.state : "/");
+                    }
+                });
+
+            })
+            .catch(err => {
+                //console.log(err);
+                Swal.fire({
+                    title: 'Invalid Information',
+                    text: 'Login Failed. Try with valid inforamtion.',
+                    icon: 'error',
+                    confirmButtonText: 'Try Again'
+                });
+            })
     }
+    const handleGoogle = () => {
+        const provider = new GoogleAuthProvider;
+        googleSign(provider)
+            .then((result) => {
+                // console.log(result.user);
+                Swal.fire({
+                    title: "Correct Credentials",
+                    text: "Login Successfully!",
+                    icon: "success",
+                    confirmButtonText: "Ok",
+                    confirmButtonColor: "#ea580c",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        navigate(location?.state ? location.state : "/");
+                    }
+                });
+            })
+            .catch((error) => {
+                //console.log(error);
+                console.log(error);
+                Swal.fire({
+                    title: "Error",
+                    text: "Something error occured. Please try again.",
+                    icon: "error",
+                    confirmButtonText: "Try Again"
+                })
+            });
+    };
     return (
         <div className='w-10/12 max-w-screen-lg mx-auto rounded-2xl my-5 shadow-xl bg-orange-100 dark:bg-orange-600 dark:bg-opacity-50 '>
             <div className='grid p-5 md:grid-cols-2 md:p-10'>
@@ -44,7 +101,7 @@ const Login = () => {
                     <div>
                         <div className="divider font-semibold dark:text-white divider-neutral">OR</div>
                         <div className='flex justify-center pt-5'>
-                            <button className='btn text-white bg-black'><FcGoogle className='text-xl' /> Continue with Google</button>
+                            <button className='btn text-white bg-black' onClick={handleGoogle}><FcGoogle className='text-xl' /> Continue with Google</button>
                         </div>
                     </div>
                 </div>

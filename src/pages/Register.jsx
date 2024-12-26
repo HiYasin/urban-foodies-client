@@ -10,7 +10,7 @@ import { GoogleAuthProvider } from "firebase/auth";
 
 const Register = () => {
     const { user, googleSign, updateInfo, createUser } = useAuth();
-    
+
     const navigate = useNavigate();
     const passwordValidation = (password) => {
         const errors = [];
@@ -51,10 +51,21 @@ const Register = () => {
             createUser(email, password)
                 .then(result => {
                     //console.log(result.user)
-                    updateInfo( name, photoURL);
+                    updateInfo(name, photoURL);
+                    Swal.fire({
+                        title: "Registration Completed",
+                        text: "User Registered And Logged in Successfully!",
+                        icon: "success",
+                        confirmButtonText: "Ok",
+                        confirmButtonColor: "#ea580c",
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            navigate(location?.state ? location.state : "/");
+                        }
+                    });
                 })
                 .then(err => console.log(err));
-            console.log(password);
+            //console.log(password);
         }
     }
 
@@ -63,11 +74,26 @@ const Register = () => {
         googleSign(provider)
             .then((result) => {
                 // console.log(result.user);
-                navigate(location?.state ? location.state : "/");
+                Swal.fire({
+                    title: "Registration Completed",
+                    text: "User Registered And Logged in Successfully!",
+                    icon: "success",
+                    confirmButtonText: "Ok",
+                    confirmButtonColor: "#ea580c",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        navigate(location?.state ? location.state : "/");
+                    }
+                });
             })
-
             .catch((error) => {
                 console.log(error);
+                Swal.fire({
+                    title: "Error",
+                    text: "Something error occured. Please try again.",
+                    icon: "error",
+                    confirmButtonText: "Try Again"
+                })
             });
     };
     console.log(user);
@@ -87,25 +113,25 @@ const Register = () => {
                                 <label className="label">
                                     <span className="label-text dark:text-white">Name</span>
                                 </label>
-                                <input type="text" name="name" className="input input-bordered" required/>
+                                <input type="text" name="name" className="input input-bordered" required />
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text dark:text-white">Email</span>
                                 </label>
-                                <input type="email" name="email" className="input input-bordered" required/>
+                                <input type="email" name="email" className="input input-bordered" required />
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text dark:text-white">Photo URL</span>
                                 </label>
-                                <input type="text" name="photoURL" className="input input-bordered" required/>
+                                <input type="text" name="photoURL" className="input input-bordered" required />
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text dark:text-white">Password</span>
                                 </label>
-                                <input type="password" name="password" className="input input-bordered" required/>
+                                <input type="password" name="password" className="input input-bordered" required />
                             </div>
                             <div className="form-control mt-6">
                                 <button className="btn bg-orange-600 text-white border-none">Register</button>
