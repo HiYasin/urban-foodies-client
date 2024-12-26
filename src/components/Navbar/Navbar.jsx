@@ -9,7 +9,7 @@ import Swal from 'sweetalert2';
 const Navbar = () => {
     const { user, signOutUser } = useAuth();
     const handleSignOut = () => {
-        console.log('clicked');
+        
         signOutUser()
             .then(() => {
                 console.log('User signed out');
@@ -23,7 +23,7 @@ const Navbar = () => {
             })
             .then(err => console.log(err));
     }
-
+    //console.log(user?.photoURL);
     const navItems = <>
         <li><NavLink to={'/'}>Home</NavLink></li>
         <li><NavLink to={'/all-foods'}>All Foods</NavLink></li>
@@ -42,7 +42,7 @@ const Navbar = () => {
                         {navItems}
                     </ul>
                 </div>
-                <img src={logo} alt="Urban Foodies" className='w-14' />
+                <img src={logo} alt="Urban Foodies" className='w-14 hidden sm:flex'/>
                 <Link to={'/'} className="text-xl md:text-3xl font-extrabold text-slate-800 dark:text-white">Urban <span className='text-orange-600'>Foodies</span></Link>
 
             </div>
@@ -51,7 +51,7 @@ const Navbar = () => {
                     {navItems}
                 </ul>
             </div>
-            <div className="navbar-end space-x-1 md:space-x-2">
+            <div className="navbar-end space-x-2 flex items-center">
                 <ThemeController></ThemeController>
                 <div>
                     {
@@ -60,6 +60,21 @@ const Navbar = () => {
                             :
                             <Link to={'/login'} className="btn bg-orange-600 text-white border-none btn-sm" >Login</Link>
                     }
+                </div>
+
+                <div className="dropdown dropdown-end mx-1">
+                    {
+                        user && <div className="avatar" tabIndex={0} role="button" >
+                            <div className="ring-orange-500 w-10 rounded-full ring">
+                                <img src={user?.photoURL} />
+                            </div>
+                        </div>
+                    }
+                    <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow dark:bg-slate-900 text-orange-600 font-bold">
+                        <li><Link>My Foods</Link></li>
+                        <li><Link>Add Foods</Link></li>
+                        <li> <Link>My Orders</Link></li>
+                    </ul>
                 </div>
             </div>
         </div>
