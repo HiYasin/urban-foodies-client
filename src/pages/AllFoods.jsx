@@ -1,9 +1,10 @@
 import React from 'react';
+import FoodsContainer from '../components/AllFoods/FoodsContainer';
 
 const AllFoods = () => {
     return (
         <div>
-            All Foods
+            <FoodsContainer></FoodsContainer>
         </div>
     );
 };

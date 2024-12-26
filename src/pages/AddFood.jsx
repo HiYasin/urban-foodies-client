@@ -15,6 +15,9 @@ const AddFood = () => {
         const price = e.target.price.value;
         const item = { food_name, img, category, origin, description, quantity, price, adder_name: user.displayName, adder_email: user.email };
         console.log(item);
+        
+        axios.post('http://localhost:5000/foods', item).then(res => {console.log(res.data); e.target.reset();})
+        
     }
     return (
         <div className='border container mx-auto rounded-2xl my-20 shadow-xl  bg-orange-100 dark:bg-orange-600 dark:bg-opacity-50'>
