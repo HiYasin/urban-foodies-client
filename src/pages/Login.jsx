@@ -2,13 +2,15 @@
 import { FcGoogle } from "react-icons/fc";
 import login from '../assets/login.json';
 import Lottie from 'lottie-react';
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from '../customHooks/useAuth';
 import { GoogleAuthProvider } from "firebase/auth";
 import Swal from 'sweetalert2'
 
 const Login = () => {
     const { googleSign, signInUser } = useAuth();
+    const location = useLocation();
+    //console.log(location);
     const navigate = useNavigate();
     const handleSubmit = event => {
         event.preventDefault();
@@ -59,7 +61,6 @@ const Login = () => {
             })
             .catch((error) => {
                 //console.log(error);
-                console.log(error);
                 Swal.fire({
                     title: "Error",
                     text: "Something error occured. Please try again.",
@@ -94,7 +95,7 @@ const Login = () => {
                                 <button className="btn bg-orange-600 text-white border-none">Login</button>
                             </div>
                             <div className='text-center py-3'>
-                                <span className="label-text dark:text-white">Don't have an account? <Link to={'/register'} className='text-orange-600 font-bold'>Register</Link> </span>
+                                <span className="label-text dark:text-white">Don't have an account? <Link to={'/register'} className='text-orange-600 font-bold' state={location?.state}>Register</Link> </span>
                             </div>
                         </form>
                     </div>

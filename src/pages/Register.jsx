@@ -2,7 +2,7 @@
 import { FcGoogle } from "react-icons/fc";
 import register from '../assets/register.json';
 import Lottie from 'lottie-react';
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import Swal from 'sweetalert2'
 import useAuth from "../customHooks/useAuth";
@@ -10,7 +10,8 @@ import { GoogleAuthProvider } from "firebase/auth";
 
 const Register = () => {
     const { user, googleSign, updateInfo, createUser } = useAuth();
-
+    const location = useLocation();
+    //console.log(location)
     const navigate = useNavigate();
     const passwordValidation = (password) => {
         const errors = [];
@@ -64,7 +65,15 @@ const Register = () => {
                         }
                     });
                 })
-                .then(err => console.log(err));
+                .catch(err => {
+                    //console.log(err);
+                    Swal.fire({
+                        title: "Error",
+                        text: "Something error occured Or, Email is already used. Please try again.",
+                        icon: "error",
+                        confirmButtonText: "Try Again"
+                    })
+                });
             //console.log(password);
         }
     }
@@ -87,7 +96,7 @@ const Register = () => {
                 });
             })
             .catch((error) => {
-                console.log(error);
+                //console.log(error);
                 Swal.fire({
                     title: "Error",
                     text: "Something error occured. Please try again.",
@@ -96,9 +105,9 @@ const Register = () => {
                 })
             });
     };
-    console.log(user);
-    const tempUser = { email: user?.email, name: user?.displayName, photoURL: user?.photoURL };
-    console.log(tempUser);
+    //console.log(user);
+    //const tempUser = { email: user?.email, name: user?.displayName, photoURL: user?.photoURL };
+    //console.log(tempUser);
     return (
         <div className='w-10/12 max-w-screen-lg mx-auto rounded-2xl my-5 shadow-xl bg-orange-100 dark:bg-orange-600 dark:bg-opacity-50 '>
             <div className='grid p-5 md:grid-cols-2 md:p-10'>
