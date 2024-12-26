@@ -2,28 +2,16 @@
 import { FcGoogle } from "react-icons/fc";
 import register from '../assets/register.json';
 import Lottie from 'lottie-react';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import Swal from 'sweetalert2'
+import useAuth from "../customHooks/useAuth";
+import { GoogleAuthProvider } from "firebase/auth";
 
 const Register = () => {
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        //const formData = new FormData(e.target);
-        //const data = Object.fromEntries(formData);
-        const password = e.target.password.value;
-        console.log(password);
-        const passwordErrors = passwordValidation(password);
-        if (passwordErrors.length > 0) {
-            Swal.fire({
-                title: 'Password Invalid',
-                html: `<ul>${passwordErrors.join('')}</ul>`, // Join errors into a single string
-                icon: 'error',
-                confirmButtonText: 'Try Again'
-            });
-        }
-        console.log(passwordErrors);
-    }
+    const { user, googleSign, updateInfo, createUser } = useAuth();
+    
+    const navigate = useNavigate();
     const passwordValidation = (password) => {
         const errors = [];
 
@@ -44,8 +32,47 @@ const Register = () => {
 
         return errors;
     };
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const name = event.target.name.value;
+        const photoURL = event.target.photoURL.value;
+        const email = event.target.email.value;
+        const password = event.target.password.value;
 
+        const passwordErrors = passwordValidation(password);
+        if (passwordErrors.length > 0) {
+            Swal.fire({
+                title: 'Password Invalid',
+                html: `<ul>${passwordErrors.join('')}</ul>`, // Join errors into a single string
+                icon: 'error',
+                confirmButtonText: 'Try Again'
+            });
+        } else {
+            createUser(email, password)
+                .then(result => {
+                    //console.log(result.user)
+                    updateInfo( name, photoURL);
+                })
+                .then(err => console.log(err));
+            console.log(password);
+        }
+    }
 
+    const handleGoogle = () => {
+        const provider = new GoogleAuthProvider;
+        googleSign(provider)
+            .then((result) => {
+                // console.log(result.user);
+                navigate(location?.state ? location.state : "/");
+            })
+
+            .catch((error) => {
+                console.log(error);
+            });
+    };
+    console.log(user);
+    const tempUser = { email: user?.email, name: user?.displayName, photoURL: user?.photoURL };
+    console.log(tempUser);
     return (
         <div className='w-10/12 max-w-screen-lg mx-auto rounded-2xl my-5 shadow-xl bg-orange-100 dark:bg-orange-600 dark:bg-opacity-50 '>
             <div className='grid p-5 md:grid-cols-2 md:p-10'>
@@ -60,25 +87,25 @@ const Register = () => {
                                 <label className="label">
                                     <span className="label-text dark:text-white">Name</span>
                                 </label>
-                                <input type="text" name="name" className="input input-bordered" />
+                                <input type="text" name="name" className="input input-bordered" required/>
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text dark:text-white">Email</span>
                                 </label>
-                                <input type="email" name="email" className="input input-bordered" />
+                                <input type="email" name="email" className="input input-bordered" required/>
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text dark:text-white">Photo URL</span>
                                 </label>
-                                <input type="text" name="photo_url" className="input input-bordered" />
+                                <input type="text" name="photoURL" className="input input-bordered" required/>
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text dark:text-white">Password</span>
                                 </label>
-                                <input type="password" name="password" className="input input-bordered" />
+                                <input type="password" name="password" className="input input-bordered" required/>
                             </div>
                             <div className="form-control mt-6">
                                 <button className="btn bg-orange-600 text-white border-none">Register</button>
@@ -91,7 +118,7 @@ const Register = () => {
                     <div>
                         <div className="divider font-semibold dark:text-white divider-neutral">OR</div>
                         <div className='flex justify-center pt-5'>
-                            <button className='btn text-white bg-black'><FcGoogle className='text-xl' /> Continue with Google</button>
+                            <button className='btn text-white bg-black' onClick={handleGoogle}><FcGoogle className='text-xl' /> Continue with Google</button>
                         </div>
                     </div>
                 </div>

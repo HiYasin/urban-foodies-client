@@ -3,7 +3,6 @@ import ThemeController from "./components/ThemeController"
 import PageNotFound from "./pages/PageNotFound"
 
 function App() {
-  console.log(import.meta.env.VITE_name)
 
   return (
     <>

@@ -1,5 +1,4 @@
 import React from 'react';
-import bannerImg1 from '../../assets/Gallery/gallery1.jpg';
 const Banner = () => {
     return (
         <div className="hero object-cover h-[50vh] bg-[url('/src/assets/Gallery/gallery1.jpg')] container mx-auto rounded-box overflow-hidden">

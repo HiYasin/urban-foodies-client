@@ -6,14 +6,17 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Router from './routes/Router.jsx';
+import AuthProvider from './context/AuthProvider.jsx';
 
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
+  //<StrictMode>
 
-    <RouterProvider router={Router} />
+    <AuthProvider>
+      <RouterProvider router={Router} />
+    </AuthProvider>
 
-  </StrictMode>,
+  //</StrictMode>,
   //The double execution happens because React Strict Mode intentionally invokes components and effects twice to detect issues.
   //This results console output twice
 )
