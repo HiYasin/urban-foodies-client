@@ -8,6 +8,9 @@ import App from "../App";
 import AllFoods from "../pages/AllFoods";
 import Gallery from "../pages/Gallery";
 import ProtectedRouter from "./ProtectedRouter";
+import AddFood from "../pages/AddFood";
+import MyOrders from "../pages/MyOrders";
+import MyFoods from "../pages/MyFoods";
 
 
 const Router = createBrowserRouter([
@@ -35,6 +38,18 @@ const Router = createBrowserRouter([
       {
         path: "/gallery",
         element: <Gallery></Gallery>
+      },
+      {
+        path: "/add-food",
+        element: <ProtectedRouter><AddFood></AddFood></ProtectedRouter>
+      },
+      {
+        path: "/my-foods",
+        element: <ProtectedRouter><MyFoods></MyFoods></ProtectedRouter>
+      },
+      {
+        path: "/my-orders",
+        element: <ProtectedRouter><MyOrders></MyOrders></ProtectedRouter>
       },
       {
         path: "/app",

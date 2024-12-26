@@ -71,9 +71,9 @@ const Navbar = () => {
                         </div>
                     }
                     <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow dark:bg-slate-900 text-orange-600 font-bold">
-                        <li><Link>My Foods</Link></li>
-                        <li><Link>Add Foods</Link></li>
-                        <li> <Link>My Orders</Link></li>
+                        <li><NavLink to={'/my-foods'}>My Foods</NavLink></li>
+                        <li><NavLink to={'/add-food'}>Add Foods</NavLink></li>
+                        <li> <NavLink to={'/my-orders'}>My Orders</NavLink></li>
                     </ul>
                 </div>
             </div>
