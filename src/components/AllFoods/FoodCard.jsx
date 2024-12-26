@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 const FoodCard = ({ food }) => {
 
-    const { food_name, img, category, origin, quantity, price } = food;
+    const { _id, food_name, img, category, origin, quantity, price } = food;
 
     return (
         <div className='grid grid-rows-subgrid'>
@@ -25,7 +25,7 @@ const FoodCard = ({ food }) => {
                             <p className='text-orange-600'><span className='text-slate-900 dark:text-white font-bold'>Quantity:</span> {quantity? quantity: 'N/A'}</p>
                         </div>
                     </div>
-                    <button className="btn border-none text-white bg-orange-600">Detalis</button>
+                    <Link to={`/foods/${_id}`} className="btn border-none text-white bg-orange-600">Detalis</Link>
                 </div>
             </div>
         </div>

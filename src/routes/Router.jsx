@@ -11,6 +11,8 @@ import ProtectedRouter from "./ProtectedRouter";
 import AddFood from "../pages/AddFood";
 import MyOrders from "../pages/MyOrders";
 import MyFoods from "../pages/MyFoods";
+import SingleFood from "../pages/SingleFood";
+import Purchase from "../pages/Purchase";
 
 
 const Router = createBrowserRouter([
@@ -50,6 +52,15 @@ const Router = createBrowserRouter([
       {
         path: "/my-orders",
         element: <ProtectedRouter><MyOrders></MyOrders></ProtectedRouter>
+      },
+      {
+        path: "/foods/:id",
+        element: <ProtectedRouter><SingleFood></SingleFood></ProtectedRouter>,
+        loader: ({params})=>fetch(`http://localhost:5000/foods/${params.id}`)
+      },
+      {
+        path: "/purchase",
+        element: <ProtectedRouter><Purchase></Purchase></ProtectedRouter>
       },
       {
         path: "/app",
