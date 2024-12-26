@@ -7,6 +7,7 @@ import PageNotFound from "../pages/PageNotFound";
 import App from "../App";
 import AllFoods from "../pages/AllFoods";
 import Gallery from "../pages/Gallery";
+import ProtectedRouter from "./ProtectedRouter";
 
 
 const Router = createBrowserRouter([
@@ -37,7 +38,7 @@ const Router = createBrowserRouter([
       },
       {
         path: "/app",
-        element: <App></App>
+        element: <ProtectedRouter><App></App></ProtectedRouter>
       },
     ]
   },
