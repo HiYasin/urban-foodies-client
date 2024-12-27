@@ -13,8 +13,8 @@ const MyFoods = () => {
         })
     }, [])
     return (
-        <div className='w-10/12 max-w-screen-lg mx-auto rounded-2xl my-5 shadow-xl bg-orange-100 dark:bg-orange-600 dark:bg-opacity-20 p-5'>
-            <div className="overflow-x-auto">
+        <div className='w-10/12 max-w-screen-lg mx-auto rounded-2xl my-5 shadow-xl bg-base-100 dark:bg-slate-700 p-5'>
+            <div className="overflow-x-auto bg-orange-100 dark:bg-orange-600 dark:bg-opacity-20 rounded-xl p-5">
                 <table className="table">
                     <thead>
                         <tr>
