@@ -66,7 +66,7 @@ const Navbar = () => {
                     {
                         user && <div className="avatar" tabIndex={0} role="button" >
                             <div className="ring-orange-500 w-10 rounded-full ring">
-                                <img src={user?.photoURL} />
+                                <img src={user.photoURL} />
                             </div>
                         </div>
                     }

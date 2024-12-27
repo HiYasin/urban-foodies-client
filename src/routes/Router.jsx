@@ -13,6 +13,7 @@ import MyOrders from "../pages/MyOrders";
 import MyFoods from "../pages/MyFoods";
 import SingleFood from "../pages/SingleFood";
 import Purchase from "../pages/Purchase";
+import UpdateFood from "../pages/UpdateFood";
 
 
 const Router = createBrowserRouter([
@@ -56,6 +57,11 @@ const Router = createBrowserRouter([
       {
         path: "/foods/:id",
         element: <ProtectedRouter><SingleFood></SingleFood></ProtectedRouter>,
+        loader: ({params})=>fetch(`http://localhost:5000/foods/${params.id}`)
+      },
+      {
+        path: "/update/:id",
+        element: <ProtectedRouter><UpdateFood></UpdateFood></ProtectedRouter>,
         loader: ({params})=>fetch(`http://localhost:5000/foods/${params.id}`)
       },
       {

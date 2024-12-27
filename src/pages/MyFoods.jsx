@@ -8,7 +8,7 @@ const MyFoods = () => {
     const [foods, setFoods] = useState([]);
     useEffect(() => {
         axios.get(`http://localhost:5000/food?email=${user.email}`).then(res => {
-            console.log(res.data);
+            //console.log(res.data);
             setFoods(res.data);
         })
     }, [])
@@ -18,10 +18,10 @@ const MyFoods = () => {
                 <table className="table">
                     <thead>
                         <tr>
-                            <th>SL</th>
-                            <th>Name</th>
-                            <th>Price</th>
-                            <th>Action</th>
+                            <th className='dark:text-white font-bold'>SL</th>
+                            <th className='dark:text-white font-bold'>Name</th>
+                            <th className='dark:text-white font-bold'>Price</th>
+                            <th className='dark:text-white font-bold'>Action</th>
                         </tr>
                     </thead>
                     <tbody>
