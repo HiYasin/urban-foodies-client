@@ -1,7 +1,7 @@
 import React from 'react';
 const Banner = () => {
     return (
-        <div className="hero object-cover h-[50vh] bg-[url('/src/assets/Gallery/gallery2.jpg')] rounded-box overflow-hidden">
+        <div className="container mx-auto hero object-cover h-[50vh] bg-[url('/src/assets/Gallery/gallery2.jpg')] rounded-box overflow-hidden">
             <div className="hero-overlay bg-opacity-30 hover:bg-opacity-60 cursor-pointer"></div>
             <div className="hero-content text-neutral-content text-center">
                 <div className="max-w-lg cursor-pointer">
