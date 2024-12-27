@@ -134,7 +134,7 @@ const Purchase = () => {
                             <div className="form-control md:col-span-2">
                                 <p className="">
                                     {
-                                         purchaseIt || <span className="label-text dark:text-white">Food Item Stock Out!</span>
+                                         purchaseIt || <span className="label-text dark:text-white">Item is not available!</span>
                                     }
                                 </p>
                             </div>

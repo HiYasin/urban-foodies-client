@@ -21,9 +21,10 @@ const MyOrders = () => {
                     <thead>
                         <tr>
                             <th className='dark:text-white font-bold'>SL</th>
-                            <th className='dark:text-white font-bold'>Name</th>
+                            <th className='dark:text-white font-bold'>Food Name</th>
                             <th className='dark:text-white font-bold'>Price</th>
-                            <th className='dark:text-white font-bold'>Owner</th>
+                            <th className='dark:text-white font-bold'>Seller/Owner</th>
+                            <th className='dark:text-white font-bold'>Buying Quantity</th>
                             <th className='dark:text-white font-bold'>Buying Date & Time</th>
                             <th className='dark:text-white font-bold'>Actions</th>
                         </tr>

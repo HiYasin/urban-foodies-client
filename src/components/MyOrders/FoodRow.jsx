@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const FoodRow = ({ food, index, setTrigger }) => {
-    const { _id, food_name, img, category, price, adder_email, adder_name, buying_date, buying_time } = food;
+    const { _id, food_name, img, category, price, adder_email, adder_name, buying_date, buying_time, buying_quantity } = food;
     //console.log(food);
     const handleDelete = () => {
         axios.delete(`http://localhost:5000/myorder/${_id}`)
@@ -45,6 +45,9 @@ const FoodRow = ({ food, index, setTrigger }) => {
                     <div className="font-bold dark:text-white">{adder_name}</div>
                     <div className="text-sm opacity-50 dark:text-white">{adder_email}</div>
                 </div>
+            </td>
+            <td>
+                <div className="font-bold dark:text-white">{buying_quantity}</div>
             </td>
             <td>
                 <div>

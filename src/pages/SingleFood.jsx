@@ -4,7 +4,7 @@ import { Link, useLoaderData } from 'react-router-dom';
 const SingleFood = () => {
     const food = useLoaderData();
     // console.log(food);
-    const { _id, food_name, img, category, origin, description, quantity, price, adder_name, adder_email, purchase } = food;
+    const { _id, food_name, img, category, origin, description, quantity, price, adder_name, adder_email, purchase=0 } = food;
     //console.log(typeof purchase);
     //console.log(typeof quantity);
     return (
@@ -20,9 +20,12 @@ const SingleFood = () => {
                         <p className='text-slate-900 dark:text-white font-semibold text-lg'>{description}</p>
                         <p className='text-slate-900 dark:text-white font-semibold text-lg'>Origin: <span className='text-orange-600'>{origin}</span></p>
                         <p className='text-slate-900 dark:text-white font-semibold text-lg'>Price: <span className='text-orange-600'>{price}</span></p>
+                        <p className='text-slate-900 dark:text-white font-semibold text-lg'>Listed by:</p>
+                        <p className='text-slate-900 dark:text-white font-semibold text-lg'>Name: <span className='text-orange-600'>{adder_name}</span></p>
+                        <p className='text-slate-900 dark:text-white font-semibold text-lg'>Email: <span className='text-orange-600'>{adder_email}</span></p>
                     </div>
                     <div>
-                        <p className='text-slate-900 dark:text-white font-semibold text-lg'>Purchased: <span className='text-orange-600'>{purchase?purchase:0}</span></p>
+                        <p className='text-slate-900 dark:text-white font-semibold text-lg'>Purchased: <span className='text-orange-600'>{purchase}</span></p>
                         <p className='text-slate-900 dark:text-white font-semibold text-lg'>Available: <span className='text-orange-600'>{quantity-purchase}</span></p>
                     </div>
                     <div>
