@@ -33,7 +33,15 @@ const Purchase = () => {
         const item = { food_name, img, price, adder_email, adder_name, buying_quantity, buyer_email: user.email, buying_date: currentDate, buying_time: currentTime };
         const updatedItem = { _id, food_name, img, category, origin, description, quantity, price, adder_name, adder_email, purchase: newPurchase.toString() };
         //console.log(item);
-        if (buying_quantity <= (quantity - purchase) && buying_quantity > 0) {
+        if( adder_email === user.email){
+            Swal.fire({
+                title: "Error",
+                text: "Since this is your added item, you can't buy it.",
+                icon: "error",
+                confirmButtonText: "Ok"
+            })
+        }
+        else if(buying_quantity <= (quantity - purchase) && buying_quantity > 0) {
             axios.post('http://localhost:5000/purchase', item).then(res => {
                 axios.put(`http://localhost:5000/update`, updatedItem).then(res => {
                     //console.log(res.data);
