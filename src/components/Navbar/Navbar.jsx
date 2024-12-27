@@ -23,7 +23,7 @@ const Navbar = () => {
             })
             .then(err => console.log(err));
     }
-    //console.log(user?.photoURL);
+    console.log(user?.displayName);
     const navItems = <>
         <li><NavLink to={'/'}>Home</NavLink></li>
         <li><NavLink to={'/all-foods'}>All Foods</NavLink></li>
@@ -66,11 +66,12 @@ const Navbar = () => {
                     {
                         user && <div className="avatar" tabIndex={0} role="button" >
                             <div className="ring-orange-500 w-10 rounded-full ring">
-                                <img src={user.photoURL} />
+                                <img src={user?.photoURL} />
                             </div>
                         </div>
                     }
                     <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow dark:bg-slate-900 text-orange-600 font-bold">
+                        <li className='text-center border-b-[1px] py-2'>{user?.displayName}</li>
                         <li><NavLink to={'/my-foods'}>My Foods</NavLink></li>
                         <li><NavLink to={'/add-food'}>Add Foods</NavLink></li>
                         <li> <NavLink to={'/my-orders'}>My Orders</NavLink></li>
