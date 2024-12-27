@@ -16,11 +16,9 @@ const Purchase = () => {
     const { _id, food_name, img, category, origin, description, quantity, price, adder_name, adder_email, purchase = 0 } = food;
 
     const available = parseInt(quantity) - parseInt(purchase);
-    //console.log(available, typeof available);
-    // ?  : setPurchaseIt(false);
     useEffect(() => {
-        setCurrentDate(moment().format('YYYY-MM-DD'));
-        setCurrentTime(moment().format('HH:mm:ss'));
+        setCurrentDate(moment().format('MMM Do YY'));
+        setCurrentTime(moment().format('h:mm:ss a'));
         if (available > 0) {
             setPurchaseIt(true);
         } else {

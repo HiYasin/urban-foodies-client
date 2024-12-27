@@ -6,12 +6,14 @@ import FoodRow from '../components/MyOrders/FoodRow';
 const MyOrders = () => {
     const { user } = useAuth();
     const [foods, setFoods] = useState([]);
+    const [ trigger, setTrigger ] = useState(false);
     useEffect(() => {
-        axios.get(`http://localhost:5000/food?email=${user.email}`).then(res => {
+        axios.get(`http://localhost:5000/myorder?email=${user.email}`).then(res => {
             //console.log(res.data);
             setFoods(res.data);
+            setTrigger(false);
         })
-    }, [])
+    }, [trigger])
     return (
         <div className='w-10/12 max-w-screen-lg mx-auto rounded-2xl my-5 shadow-xl bg-base-100 dark:bg-slate-700 p-5'>
             <div className="overflow-x-auto bg-orange-100 dark:bg-orange-600 dark:bg-opacity-20 rounded-xl p-5">
@@ -28,7 +30,7 @@ const MyOrders = () => {
                     </thead>
                     <tbody>
                         {
-                            foods.map((food,index) => <FoodRow key={food._id} index={index} food={food}></FoodRow>)
+                            foods.map((food,index) => <FoodRow key={food._id} index={index} food={food} setTrigger={setTrigger}></FoodRow>)
                         }
                     </tbody>
                 </table>

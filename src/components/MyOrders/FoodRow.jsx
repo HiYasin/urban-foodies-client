@@ -1,10 +1,21 @@
+import axios from 'axios';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
-const FoodRow = ({ food, index, purchasedate }) => {
-    const { _id, food_name, img, category, price, adder_email, adder_name } = food;
+const FoodRow = ({ food, index, setTrigger }) => {
+    const { _id, food_name, img, category, price, adder_email, adder_name, buying_date, buying_time } = food;
+    //console.log(food);
     const handleDelete = () => {
-
+        axios.delete(`http://localhost:5000/myorder/${_id}`)
+            .then(response => {
+                Swal.fire('Deleted!', 'The food item has been deleted.', 'success');
+                setTrigger(true);
+            })
+            .catch(error => {
+                console.log(error);
+                Swal.fire('Error!', 'There was an error deleting the food item.', 'error');
+            });
     }
     return (
         <tr>
@@ -37,8 +48,8 @@ const FoodRow = ({ food, index, purchasedate }) => {
             </td>
             <td>
                 <div>
-                    <div className="font-bold dark:text-white">12.12.12.</div>
-                    <div className="text-sm opacity-50 dark:text-white">11:20PM</div>
+                    <div className="font-bold dark:text-white">{buying_date}</div>
+                    <div className="text-sm opacity-50 dark:text-white">{buying_time}</div>
                 </div>
             </td>
             <td>
