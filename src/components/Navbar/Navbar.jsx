@@ -23,7 +23,6 @@ const Navbar = () => {
             })
             .then(err => console.log(err));
     }
-    console.log(user?.displayName);
     const navItems = <>
         <li><NavLink to={'/'}>Home</NavLink></li>
         <li><NavLink to={'/all-foods'}>All Foods</NavLink></li>

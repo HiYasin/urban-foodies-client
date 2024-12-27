@@ -14,7 +14,7 @@ const AddFood = () => {
         const description = e.target.description.value;
         const quantity = e.target.quantity.value;
         const price = e.target.price.value;
-        const item = { food_name, img, category, origin, description, quantity, price, adder_name: user.displayName, adder_email: user.email };
+        const item = { food_name, img, category, origin, description, quantity, price, purchase: 0, adder_name: user.displayName, adder_email: user.email };
         console.log(item);
 
         axios.post('http://localhost:5000/foods', item).then(res => {

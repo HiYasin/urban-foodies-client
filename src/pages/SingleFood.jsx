@@ -4,7 +4,9 @@ import { Link, useLoaderData } from 'react-router-dom';
 const SingleFood = () => {
     const food = useLoaderData();
     // console.log(food);
-    const { _id, food_name, img, category, origin, description, quantity, price, adder_name, adder_email } = food;
+    const { _id, food_name, img, category, origin, description, quantity, price, adder_name, adder_email, purchase } = food;
+    //console.log(typeof purchase);
+    //console.log(typeof quantity);
     return (
         <div className='w-10/12 max-w-screen-lg mx-auto rounded-2xl my-5 shadow-xl bg-orange-100 dark:bg-orange-600 dark:bg-opacity-20 '>
             <div className='grid p-5 md:grid-cols-2 gap-5 md:gap-8'>
@@ -20,11 +22,11 @@ const SingleFood = () => {
                         <p className='text-slate-900 dark:text-white font-semibold text-lg'>Price: <span className='text-orange-600'>{price}</span></p>
                     </div>
                     <div>
-                        <p className='text-slate-900 dark:text-white font-semibold text-lg'>Purchased: <span className='text-orange-600'>{5}</span></p>
-                        <p className='text-slate-900 dark:text-white font-semibold text-lg'>Available: <span className='text-orange-600'>{5}</span></p>
+                        <p className='text-slate-900 dark:text-white font-semibold text-lg'>Purchased: <span className='text-orange-600'>{purchase?purchase:0}</span></p>
+                        <p className='text-slate-900 dark:text-white font-semibold text-lg'>Available: <span className='text-orange-600'>{quantity-purchase}</span></p>
                     </div>
                     <div>
-                    <Link to={'/purchase'} className='btn bg-orange-600 text-white font-bold text-lg border-none'>Purchase</Link>
+                        <Link to={`/purchase/${_id}`} className='btn bg-orange-600 text-white font-bold text-lg border-none'>Purchase</Link>
                     </div>
                 </div>
             </div>

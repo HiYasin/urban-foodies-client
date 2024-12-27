@@ -7,11 +7,11 @@ const FoodsContainer = () => {
     const [foods, setFoods] = useState([]);
     useEffect(() => {
         axios.get('http://localhost:5000/foods').then(res => {
-            console.log(res.data);
+            //console.log(res.data);
             setFoods(res.data);
         })
     }, []);
-    console.log(foods.length);
+    //console.log(foods.length);
 
     return (
         <div className='container mx-auto'>
