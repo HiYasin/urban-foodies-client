@@ -4,7 +4,6 @@ import Login from "../pages/Login";
 import Main from "../layouts/Main";
 import Home from "../pages/Home";
 import PageNotFound from "../pages/PageNotFound";
-import App from "../App";
 import AllFoods from "../pages/AllFoods";
 import Gallery from "../pages/Gallery";
 import ProtectedRouter from "./ProtectedRouter";
@@ -68,11 +67,7 @@ const Router = createBrowserRouter([
         path: "/purchase/:id",
         element: <ProtectedRouter><Purchase></Purchase></ProtectedRouter>,
         loader: ({params})=>fetch(`https://urban-foodies-server.vercel.app/foods/${params.id}`)
-      },
-      {
-        path: "/app",
-        element: <ProtectedRouter><App></App></ProtectedRouter>
-      },
+      }
     ]
   },
 

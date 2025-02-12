@@ -9,7 +9,6 @@ import Swal from 'sweetalert2';
 const Navbar = () => {
     const { user, signOutUser } = useAuth();
     const handleSignOut = () => {
-        
         signOutUser()
             .then(() => {
                 console.log('User signed out');
@@ -27,9 +26,16 @@ const Navbar = () => {
         <li><NavLink to={'/'}>Home</NavLink></li>
         <li><NavLink to={'/all-foods'}>All Foods</NavLink></li>
         <li><NavLink to={'/gallery'}>Gallery</NavLink></li>
+        {
+            user && <>
+                <li><NavLink to={'/my-foods'}>My Foods</NavLink></li>
+                <li><NavLink to={'/add-food'}>Add</NavLink></li>
+                <li><NavLink to={'/my-orders'}>Orders</NavLink></li>
+            </>
+        }
     </>
     return (
-        <div className="navbar container mx-auto">
+        <div className="navbar mx-auto">
             <div className="navbar-start w-full md:w-[50%]">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-sm md:btn-md border-none lg:hidden bg-orange-600 text-white mr-2">
@@ -41,7 +47,7 @@ const Navbar = () => {
                         {navItems}
                     </ul>
                 </div>
-                <img src={logo} alt="Urban Foodies" className='w-14 hidden sm:flex'/>
+                <img src={logo} alt="Urban Foodies" className='w-14 hidden sm:flex' />
                 <Link to={'/'} className="text-xl md:text-3xl font-extrabold text-slate-800 dark:text-white">Urban <span className='text-orange-600'>Foodies</span></Link>
 
             </div>
@@ -55,7 +61,7 @@ const Navbar = () => {
                 <div>
                     {
                         user ?
-                            <button className='btn bg-orange-600 text-white border-none btn-sm' onClick={handleSignOut}>Logout</button>
+                            <></>
                             :
                             <Link to={'/login'} className="btn bg-orange-600 text-white border-none btn-sm" >Login</Link>
                     }
@@ -63,18 +69,22 @@ const Navbar = () => {
 
                 <div className="dropdown dropdown-end mx-1">
                     {
-                        user && <div className="avatar" tabIndex={0} role="button" >
-                            <div className="ring-orange-500 w-10 rounded-full ring">
-                                <img src={user?.photoURL} />
+                        user && <>
+                            <div className="avatar" tabIndex={0} role="button" >
+                                <div className="ring-orange-500 w-10 rounded-full ring">
+                                    <img src={user.photoURL} />
+                                </div>
                             </div>
-                        </div>
+                            <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow dark:bg-slate-900 text-orange-600 font-bold">
+                                <li className='text-center border-b-[1px] py-2'>{user?.displayName}</li>
+                                <li><NavLink to={'/my-foods'}>My Foods</NavLink></li>
+                                <li><NavLink to={'/add-food'}>Add Foods</NavLink></li>
+                                <li><NavLink to={'/my-orders'}>My Orders</NavLink></li>
+                                <li><button className='btn bg-orange-600 text-white border-none btn-sm' onClick={handleSignOut}>Logout</button></li>
+                            </ul>
+                        </>
                     }
-                    <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow dark:bg-slate-900 text-orange-600 font-bold">
-                        <li className='text-center border-b-[1px] py-2'>{user?.displayName}</li>
-                        <li><NavLink to={'/my-foods'}>My Foods</NavLink></li>
-                        <li><NavLink to={'/add-food'}>Add Foods</NavLink></li>
-                        <li> <NavLink to={'/my-orders'}>My Orders</NavLink></li>
-                    </ul>
+
                 </div>
             </div>
         </div>

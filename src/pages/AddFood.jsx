@@ -41,7 +41,7 @@ const AddFood = () => {
 
     }
     return (
-        <div className='border container mx-auto rounded-2xl my-20 shadow-xl  bg-orange-100 dark:bg-orange-600 dark:bg-opacity-50'>
+        <div className='border container m-0 p-0 mx-auto rounded-2xl my-20 shadow-xl  bg-orange-100 dark:bg-orange-600 dark:bg-opacity-50'>
 
             <div className='m-5 md:m-10 lg:m-20'>
                 <h2 className='text-3xl font-bold text-center dark:text-white'>Enter Food Details</h2>
