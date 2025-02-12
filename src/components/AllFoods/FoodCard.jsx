@@ -6,7 +6,7 @@ const FoodCard = ({ food }) => {
     const available = parseInt(quantity) - parseInt(purchase);
     return (
         <div className='grid grid-rows-subgrid'>
-            <div className="card bg-base-100 dark:bg-slate-900 max-w-96 shadow-xl">
+            <div className="card bg-base-100 dark:bg-slate-900 max-w-96 shadow-xl border border-orange-600">
                 <figure className="px-5 pt-5">
                     <img
                         src={img}

@@ -100,7 +100,7 @@ const Login = () => {
                         </form>
                     </div>
                     <div>
-                        <div className="divider font-semibold dark:text-white divider-neutral">OR</div>
+                        <div className="divider dark:divider-neutral font-semibold dark:text-white">OR</div>
                         <div className='flex justify-center pt-5'>
                             <button className='btn text-white bg-black' onClick={handleGoogle}><FcGoogle className='text-xl' /> Continue with Google</button>
                         </div>

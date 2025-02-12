@@ -3,8 +3,8 @@ import img from '/src/assets/Offer/rest.png'
 import img2 from '/src/assets/Offer/delicious.png'
 const About = () => {
     return (
-        <div className='container mx-auto'>
-            <h2 className='text-orange-600 dark:text-white font-bold text-3xl md:text-5xl text-center mt-20'>About Us</h2>
+        <div className='mx-auto'>
+            <h2 className='text-orange-600 dark:text-white font-bold text-3xl md:text-5xl text-center mt-20'><div className="divider dark:divider-neutral">About Us</div></h2>
             <div className="grid md:grid-cols-2 items-center gap-5 md:gap-10 m-0 p-0">
                 <div className=''>
                     <h1 className='dark:text-orange-600 text-3xl md:text-5xl text-extrabold py-5'>Why We Are Best</h1>

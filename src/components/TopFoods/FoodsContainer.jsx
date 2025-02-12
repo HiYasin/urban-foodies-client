@@ -17,7 +17,7 @@ const FoodsContainer = () => {
     if (loading) return <Loading />;
     return (
         <div className='container mx-auto'>
-            <div className='bg-orange-100 dark:bg-orange-600 dark:bg-opacity-50 mt-4 rounded-md p-5'>
+            <div className=' mt-4 rounded-md p-5'>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
                     {
                         foods.map((food) => <FoodCard key={food._id} food={food}></FoodCard>)
