@@ -30,8 +30,8 @@ const FoodsContainer = () => {
     }
 
     return (
-        <div className='container mx-auto'>
-            <div className='flex justify-center gap-3 my-5'>
+        <>
+            <div className='flex flex-col md:flex-row items-center justify-center gap-3 my-5'>
                 <div className="join">
                     <div>
                         <div>
@@ -62,7 +62,7 @@ const FoodsContainer = () => {
                     }
                 </div>
             </div>
-        </div>
+        </>
     );
 };
 
