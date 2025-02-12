@@ -20,7 +20,7 @@ const UpdateFood = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         const updatedItem = { ...foodData, adder_name: user.displayName, adder_email: user.email };
-        console.log(updatedItem);
+        //console.log(updatedItem);
 
         axios.put(`https://urban-foodies-server.vercel.app/foods/${foodData.id}`, updatedItem).then(res => {
             Swal.fire({

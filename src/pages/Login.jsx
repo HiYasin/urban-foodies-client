@@ -18,7 +18,7 @@ const Login = () => {
         const password = event.target.password.value;
         signInUser(email, password)
             .then(result => {
-                console.log(result.user);
+               // console.log(result.user);
                 Swal.fire({
                     title: "Valid Information",
                     text: "User Logged in Successfully!",

@@ -25,10 +25,10 @@ const UpdateFood = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         const updatedItem = { ...foodData, adder_name: currentData.adder_name, adder_email: currentData.adder_email };
-        console.log(updatedItem);
+        //console.log(updatedItem);
 
         axios.put(`https://urban-foodies-server.vercel.app/update`, updatedItem).then(res => {
-            console.log(res.data);
+            //console.log(res.data);
             Swal.fire({
                 title: "Food Updated",
                 text: "Food Information Updated Successfully!",
@@ -38,7 +38,7 @@ const UpdateFood = () => {
             });
             navigate('/my-foods');
         }).catch(err => {
-            console.log(err);
+            //console.log(err);
             Swal.fire({
                 title: "Error",
                 text: "There was an error updating the food information.",

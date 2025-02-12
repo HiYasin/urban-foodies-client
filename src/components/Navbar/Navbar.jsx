@@ -11,7 +11,7 @@ const Navbar = () => {
     const handleSignOut = () => {
         signOutUser()
             .then(() => {
-                console.log('User signed out');
+                //console.log('User signed out');
                 Swal.fire({
                     title: 'LogOut',
                     text: 'User logged out successfully.',
@@ -20,7 +20,9 @@ const Navbar = () => {
                     confirmButtonColor: "#ea580c"
                 });
             })
-            .then(err => console.log(err));
+            .then(err => {
+                // console.log(err)
+            });
     }
     const navItems = <>
         <li><NavLink to={'/'}>Home</NavLink></li>

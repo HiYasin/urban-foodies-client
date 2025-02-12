@@ -15,7 +15,7 @@ const AddFood = () => {
         const quantity = e.target.quantity.value;
         const price = e.target.price.value;
         const item = { food_name, img, category, origin, description, quantity, price, purchase: 0, adder_name: user.displayName, adder_email: user.email };
-        console.log(item);
+        //console.log(item);
 
         axios.post('https://urban-foodies-server.vercel.app/foods', item).then(res => {
             Swal.fire({
