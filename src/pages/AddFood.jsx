@@ -17,7 +17,7 @@ const AddFood = () => {
         const item = { food_name, img, category, origin, description, quantity, price, purchase: 0, adder_name: user.displayName, adder_email: user.email };
         console.log(item);
 
-        axios.post('http://localhost:5000/foods', item).then(res => {
+        axios.post('https://urban-foodies-server.vercel.app/foods', item).then(res => {
             Swal.fire({
                 title: "Food Added",
                 text: "Food Informations Stored Successfully!",

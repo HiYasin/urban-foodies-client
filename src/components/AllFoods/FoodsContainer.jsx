@@ -7,13 +7,13 @@ const FoodsContainer = () => {
     const [searchQuery, setSearchQuery] = useState('');
 
     useEffect(() => {
-        axios.get('http://localhost:5000/foods').then(res => {
+        axios.get('https://urban-foodies-server.vercel.app/foods').then(res => {
             setFoods(res.data);
         });
     }, [searchQuery]);
 
     const handleSearch = () => {
-        axios.get(`http://localhost:5000/search-foods?name=${searchQuery}`).then(res => {
+        axios.get(`https://urban-foodies-server.vercel.app/search-foods?name=${searchQuery}`).then(res => {
             setFoods(res.data);
         }).catch(error => {
             console.error('Error fetching search results:', error);

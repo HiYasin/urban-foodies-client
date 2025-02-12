@@ -42,8 +42,8 @@ const Purchase = () => {
             })
         }
         else if(buying_quantity <= (quantity - purchase) && buying_quantity > 0) {
-            axios.post('http://localhost:5000/purchase', item).then(res => {
-                axios.put(`http://localhost:5000/update`, updatedItem).then(res => {
+            axios.post('https://urban-foodies-server.vercel.app/purchase', item).then(res => {
+                axios.put(`https://urban-foodies-server.vercel.app/update`, updatedItem).then(res => {
                     //console.log(res.data);
                 }).catch(err => {
                     //console.log(err);
@@ -153,7 +153,7 @@ const Purchase = () => {
                     </div>
                 </div>
                 <div className='order-1 md:order-2 md:w-auto mx-auto my-auto'>
-                    <img src={img} alt={food_name} className='w-full rounded-box' />
+                    <img src={img} alt={food_name} className='w-auto rounded-box' />
                 </div>
             </div>
         </div>

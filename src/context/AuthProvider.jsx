@@ -17,6 +17,7 @@ const AuthProvider = ({ children }) => {
     const updateInfo = ( name, photoURL ) =>{
         return updateProfile(auth.currentUser, { displayName: name, photoURL: photoURL })
     }
+    
     //for registration
     const createUser = (email, password) => {
         setLoading(true);

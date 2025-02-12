@@ -7,7 +7,7 @@ const FoodRow = ({ food, index, setTrigger }) => {
     const { _id, food_name, img, category, price, adder_email, adder_name, buying_date, buying_time, buying_quantity } = food;
     //console.log(food);
     const handleDelete = () => {
-        axios.delete(`http://localhost:5000/myorder/${_id}`)
+        axios.delete(`https://urban-foodies-server.vercel.app/myorder/${_id}`)
             .then(response => {
                 Swal.fire('Deleted!', 'The food item has been deleted.', 'success');
                 setTrigger(true);

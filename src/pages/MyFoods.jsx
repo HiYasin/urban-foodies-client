@@ -7,7 +7,7 @@ const MyFoods = () => {
     const { user } = useAuth();
     const [foods, setFoods] = useState([]);
     useEffect(() => {
-        axios.get(`http://localhost:5000/food?email=${user.email}`).then(res => {
+        axios.get(`https://urban-foodies-server.vercel.app/food?email=${user.email}`).then(res => {
             //console.log(res.data);
             setFoods(res.data);
         })

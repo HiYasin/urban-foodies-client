@@ -5,7 +5,7 @@ import FoodCard from './FoodCard';
 const FoodsContainer = () => {
     const [foods, setFoods] = useState([]);
     useEffect(() => {
-        axios.get('http://localhost:5000/top-purchased-foods').then(res => {
+        axios.get('https://urban-foodies-server.vercel.app/top-purchased-foods').then(res => {
             //console.log(res.data);
             setFoods(res.data);
         })

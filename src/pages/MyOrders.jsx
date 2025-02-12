@@ -8,7 +8,7 @@ const MyOrders = () => {
     const [foods, setFoods] = useState([]);
     const [ trigger, setTrigger ] = useState(false);
     useEffect(() => {
-        axios.get(`http://localhost:5000/myorder?email=${user.email}`).then(res => {
+        axios.get(`https://urban-foodies-server.vercel.app/myorder?email=${user.email}`).then(res => {
             //console.log(res.data);
             setFoods(res.data);
             setTrigger(false);

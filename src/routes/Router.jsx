@@ -57,17 +57,17 @@ const Router = createBrowserRouter([
       {
         path: "/foods/:id",
         element: <ProtectedRouter><SingleFood></SingleFood></ProtectedRouter>,
-        loader: ({params})=>fetch(`http://localhost:5000/foods/${params.id}`)
+        loader: ({params})=>fetch(`https://urban-foodies-server.vercel.app/foods/${params.id}`)
       },
       {
         path: "/update/:id",
         element: <ProtectedRouter><UpdateFood></UpdateFood></ProtectedRouter>,
-        loader: ({params})=>fetch(`http://localhost:5000/foods/${params.id}`)
+        loader: ({params})=>fetch(`https://urban-foodies-server.vercel.app/foods/${params.id}`)
       },
       {
         path: "/purchase/:id",
         element: <ProtectedRouter><Purchase></Purchase></ProtectedRouter>,
-        loader: ({params})=>fetch(`http://localhost:5000/foods/${params.id}`)
+        loader: ({params})=>fetch(`https://urban-foodies-server.vercel.app/foods/${params.id}`)
       },
       {
         path: "/app",

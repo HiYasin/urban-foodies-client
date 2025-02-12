@@ -22,7 +22,7 @@ const UpdateFood = () => {
         const updatedItem = { ...foodData, adder_name: user.displayName, adder_email: user.email };
         console.log(updatedItem);
 
-        axios.put(`http://localhost:5000/foods/${foodData.id}`, updatedItem).then(res => {
+        axios.put(`https://urban-foodies-server.vercel.app/foods/${foodData.id}`, updatedItem).then(res => {
             Swal.fire({
                 title: "Food Updated",
                 text: "Food Information Updated Successfully!",
