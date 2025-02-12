@@ -35,7 +35,7 @@ const Navbar = () => {
         }
     </>
     return (
-        <div className="navbar mx-auto">
+        <div className="navbar px-0 mx-auto">
             <div className="navbar-start w-full md:w-[50%]">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-sm md:btn-md border-none lg:hidden bg-orange-600 text-white mr-2">

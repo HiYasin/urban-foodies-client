@@ -12,7 +12,7 @@ const Main = () => {
                     <Navbar></Navbar>
                 </ContainerX>
             </header>
-            <main className='py-20 dark:bg-slate-800 px-[5%]'>
+            <main className='py-20 dark:bg-slate-800'>
                 <Outlet></Outlet>
             </main>
             <footer className='dark:bg-slate-800'>
