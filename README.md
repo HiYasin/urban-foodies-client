@@ -5,11 +5,11 @@ Welcome to Urban Foodies where flavor meets excellence! Our restaurant website i
 # 🌐 Live Link
    [Click here to see live ](https://urban-foodies-e0b28.web.app/)
 
-# ?“Requirement Document
+# 🧾 Requirement Document
 
 [Click Here](https://github.com/programming-hero-web-course-4/b10a8-gadget-heaven-HiYasin/blob/main/src/assets/Batch-10_Assignment-08.pdf)
 
-# 🚀 Fundamental Concepts Used
+# 🚀 Fundamentals Concepts Used
 
 - **Functional Components**: Utilized extensively across the application for constructing the user interface.
 - **Routing with Router:** React Router manages navigation across the web application.
