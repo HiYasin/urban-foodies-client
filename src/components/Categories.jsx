@@ -27,7 +27,7 @@ const Categories = () => {
     ];
 
     return (
-        <div>
+        <div id="categories">
             <h2 className='text-orange-600 dark:text-white font-bold text-3xl md:text-5xl text-center mt-20 mb-5 md:mb-16'><div className="divider dark:divider-neutral">Categories</div></h2>
             <div className='grid md:grid-cols-2 lg:grid-cols-3 justify-between gap-10'>
                 {

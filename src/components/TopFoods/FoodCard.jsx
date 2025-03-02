@@ -6,7 +6,7 @@ const FoodCard = ({ food }) => {
     const available = parseInt(quantity) - parseInt(purchase);
     return (
         <div className='grid grid-rows-subgrid'>
-            <div className="card bg-base-100 dark:bg-slate-900 max-w-96 shadow-xl border border-orange-600">
+            <div className="card bg-base-100 dark:bg-slate-900 w-fit shadow-xl ">
                 <figure className="px-5 pt-5">
                     <img
                         src={img}
@@ -21,8 +21,8 @@ const FoodCard = ({ food }) => {
                             <div className='text-orange-600 dark:text-white dark:bg-orange-600 font-bold bg-orange-300/50 rounded-full px-2'>{origin}</div>
                         </div>
                         <div className='grid grid-cols-2 border rounded-xl overflow-hidden'>
-                            <p className='text-orange-600 border p-2 text-center'><p className='text-slate-900 dark:text-white font-bold'>Category</p> {category ? category : 'N/A'}</p>
-                            <p className='text-orange-600 border p-2 text-center'><p className='text-slate-900 dark:text-white font-bold'>Available Quantity</p> {available}</p>
+                            <div className='text-orange-600 border p-2 text-center'><p className='text-slate-900 dark:text-white font-bold'>Category</p> {category ? category : 'N/A'}</div>
+                            <div className='text-orange-600 border p-2 text-center'><p className='text-slate-900 dark:text-white font-bold'>Available Quantity</p> {available}</div>
                         </div>
 
                     </div>

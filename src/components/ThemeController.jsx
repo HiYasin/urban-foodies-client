@@ -2,15 +2,15 @@ import React from 'react';
 import { useTheme } from '../customHooks/useTheme';
 
 const ThemeController = () => {
-    const { changeTheme, mode } = useTheme();
+      const { theme, toggleTheme } = useTheme();
     return (
         <label className="swap swap-rotate w-8 h-8 rounded-full bg-base-100">
             {/* this hidden checkbox controls the state */}
-            <input type="checkbox" onChange={changeTheme} />
+            <input type="checkbox" onChange={toggleTheme} />
 
             {/* moon icon */}
             <svg
-                className={`swap-on h-6 w-6 ${mode === 'dark' ? 'fill-slate-900' : ''}`}
+                className={`swap-on h-6 w-6 ${theme === 'dark' ? 'fill-slate-900' : ''}`}
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24">
                 <path
@@ -18,7 +18,7 @@ const ThemeController = () => {
             </svg>
             {/* sun icon */}
             <svg
-                className={`swap-off h-6 w-6 ${mode === 'light' ? 'fill-slate-900' : ''}`}
+                className={`swap-off h-6 w-6 ${theme === 'light' ? 'fill-slate-900' : ''}`}
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24">
                 <path
@@ -29,5 +29,4 @@ const ThemeController = () => {
         </label>
     );
 };
-
 export default ThemeController;

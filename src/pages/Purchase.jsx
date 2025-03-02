@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import useAuth from '../customHooks/useAuth';
-import { useLoaderData, useNavigate } from 'react-router-dom';
+import { ScrollRestoration, useLoaderData, useNavigate } from 'react-router-dom';
 import moment from 'moment';
 import Swal from 'sweetalert2';
 import axios from 'axios';
+import ContainerX from '../components/ContainerX';
 
 const Purchase = () => {
     const navigate = useNavigate();
     const { user } = useAuth();
     const food = useLoaderData();
-    const [purchaseIt, setPurchaseIt] = useState();
+    const [purchaseIt, setPurchaseIt] = useState(true);
     const [currentDate, setCurrentDate] = useState('');
     const [currentTime, setCurrentTime] = useState('');
 
@@ -33,7 +34,7 @@ const Purchase = () => {
         const item = { food_name, img, price, adder_email, adder_name, buying_quantity, buyer_email: user.email, buying_date: currentDate, buying_time: currentTime };
         const updatedItem = { _id, food_name, img, category, origin, description, quantity, price, adder_name, adder_email, purchase: newPurchase.toString() };
         //console.log(item);
-        if( adder_email === user.email){
+        if (adder_email === user.email) {
             Swal.fire({
                 title: "Error",
                 text: "Since this is your added item, you can't buy it.",
@@ -41,7 +42,7 @@ const Purchase = () => {
                 confirmButtonText: "Ok"
             })
         }
-        else if(buying_quantity <= (quantity - purchase) && buying_quantity > 0) {
+        else if (buying_quantity <= (quantity - purchase) && buying_quantity > 0) {
             axios.post('https://urban-foodies-server.vercel.app/purchase', item).then(res => {
                 axios.put(`https://urban-foodies-server.vercel.app/update`, updatedItem).then(res => {
                     //console.log(res.data);
@@ -85,78 +86,79 @@ const Purchase = () => {
         }
     };
     return (
-        <div className='w-10/12 max-w-screen-lg mx-auto rounded-2xl my-5 shadow-xl bg-orange-100 dark:bg-orange-600 dark:bg-opacity-50 '>
-            <div className='grid p-5 md:grid-cols-2 md:p-10'>
-                <div className='order-2 md:order-1 mx-5 md:mx-10 lg:mx-20'>
-                    <h2 className='text-3xl font-bold text-center dark:text-white'>Purchase Information</h2>
-                    <div>
-                        <form className='grid md:grid-cols-2 gap-5' onSubmit={handleSubmit}>
-                            <div className="form-control">
-                                <label className="label">
-                                    <span className="label-text dark:text-white">Food Name</span>
-                                </label>
-                                <input type="text" className="input input-bordered" value={food_name} disabled />
-                            </div>
-                            <div className="form-control">
-                                <label className="label">
-                                    <span className="label-text dark:text-white">Price</span>
-                                </label>
-                                <input type="number" className="input input-bordered" value={price} disabled />
-                            </div>
-                            <div className="form-control">
-                                <label className="label">
-                                    <span className="label-text dark:text-white">Available Quantity</span>
-                                </label>
-                                <input type="number" className="input input-bordered" value={available} disabled />
-                            </div>
-                            <div className="form-control">
-                                <label className="label">
-                                    <span className="label-text dark:text-white">Buying Quantity</span>
-                                </label>
-                                <input type="number" name="buying_quantity" className="input input-bordered" required />
-                            </div>
-                            <div className="form-control">
-                                <label className="label">
-                                    <span className="label-text dark:text-white">Buying Date</span>
-                                </label>
-                                <input type="text" className="input input-bordered" value={currentDate} disabled />
-                            </div>
-                            <div className="form-control">
-                                <label className="label">
-                                    <span className="label-text dark:text-white">Buying Time</span>
-                                </label>
-                                <input type="text" className="input input-bordered" value={currentTime} disabled />
-                            </div>
-                            <div className="form-control col-span-2">
-                                <label className="label">
-                                    <span className="label-text dark:text-white">Buyer Name</span>
-                                </label>
-                                <input type="text" className="input input-bordered" value={user.displayName} disabled />
-                            </div>
-                            <div className="form-control col-span-2">
-                                <label className="label">
-                                    <span className="label-text dark:text-white">Buyer Email</span>
-                                </label>
-                                <input type="text" className="input input-bordered" value={user.email} disabled />
-                            </div>
-                            <div className="form-control md:col-span-2">
-                                <p className="">
-                                    {
-                                         purchaseIt || <span className="label-text dark:text-white">Item is not available!</span>
-                                    }
-                                </p>
-                            </div>
-                            <div className="form-control md:col-span-2">
-                                <input type='submit' value={'Purchase Confirm'} className="btn bg-orange-500 disabled:bg-orange-900 border-none text-white disabled:text-white" disabled={!purchaseIt} />
-                            </div>
-                        </form>
+        <ContainerX>
+            <div className='mx-auto rounded-2xl my-5 shadow-xl bg-orange-100 dark:bg-orange-600 dark:bg-opacity-50 '>
+                <div className='grid p-5 md:grid-cols-2 gap-5'>
+                    <div className='order-2 md:order-1'>
+                        <h2 className='text-3xl font-bold text-center dark:text-white'>Purchase Information</h2>
+                        <div>
+                            <form className='grid sm:grid-cols-2 gap-2' onSubmit={handleSubmit}>
+                                <div className="">
+                                    <label className="label">
+                                        <span className="label-text dark:text-white">Food Name</span>
+                                    </label>
+                                    <input type="text" className="input input-bordered w-full" value={food_name} disabled />
+                                </div>
+                                <div className="">
+                                    <label className="label">
+                                        <span className="label-text dark:text-white">Price</span>
+                                    </label>
+                                    <input type="number" className="input input-bordered w-full" value={price} disabled />
+                                </div>
+                                <div className="">
+                                    <label className="label">
+                                        <span className="label-text dark:text-white">Available Quantity</span>
+                                    </label>
+                                    <input type="number" className="input input-bordered w-full" value={available} disabled />
+                                </div>
+                                <div className="">
+                                    <label className="label">
+                                        <span className="label-text dark:text-white">Buying Quantity</span>
+                                    </label>
+                                    <input type="number" name="buying_quantity" className="input input-bordered w-full" required />
+                                </div>
+                                <div className="">
+                                    <label className="label">
+                                        <span className="label-text dark:text-white">Buying Date</span>
+                                    </label>
+                                    <input type="text" className="input input-bordered w-full" value={currentDate} disabled />
+                                </div>
+                                <div className="">
+                                    <label className="label">
+                                        <span className="label-text dark:text-white">Buying Time</span>
+                                    </label>
+                                    <input type="text" className="input input-bordered w-full" value={currentTime} disabled />
+                                </div>
+                                <div className="">
+                                    <label className="label">
+                                        <span className="label-text dark:text-white">Buyer Name</span>
+                                    </label>
+                                    <input type="text" className="input input-bordered w-full" value={user.displayName} disabled />
+                                </div>
+                                <div className="">
+                                    <label className="label">
+                                        <span className="label-text dark:text-white">Buyer Email</span>
+                                    </label>
+                                    <input type="text" className="input input-bordered w-full" value={user.email} disabled />
+                                </div>
+                                <div className="mt-5">
+                                    <input type='submit' value={'Purchase Confirm'} className="btn border-none disabled:text-white bg-orange-600" disabled={!purchaseIt}/>
+                                    <p>
+                                        {
+                                            purchaseIt || <span className="label-text dark:text-white">Item is not available!</span>
+                                        }
+                                    </p>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div className='order-1 md:order-2 md:w-full mx-auto my-auto'>
+                        <img src={img} alt={food_name} className='w-full rounded-box' />
                     </div>
                 </div>
-                <div className='order-1 md:order-2 md:w-auto mx-auto my-auto'>
-                    <img src={img} alt={food_name} className='w-auto rounded-box' />
-                </div>
+                <ScrollRestoration />
             </div>
-        </div>
+        </ContainerX>
     );
 };
 

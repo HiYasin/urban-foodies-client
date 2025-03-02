@@ -5,6 +5,7 @@ import About from '../components/Main/About';
 import TopFoods from '../components/TopFoods/TopFoods';
 import ContainerX from '../components/ContainerX';
 import Categories from '../components/Categories';
+import { ScrollRestoration } from 'react-router-dom';
 
 const Home = () => {
     return (
@@ -16,6 +17,7 @@ const Home = () => {
                 <Offer></Offer>
                 <About></About>
             </ContainerX>
+            <ScrollRestoration />
         </div>
     );
 };

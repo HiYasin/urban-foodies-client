@@ -53,14 +53,14 @@ const FoodsContainer = () => {
                             </div>
                             <div className="sort-select">
                                 <select onChange={(e) => handleSort(e.target.value)} className="select select-bordered join-item bg-orange-600 border-none text-white">
-                                    <option selected disabled>Sort by Price</option>
+                                    <option value={''} disabled>Sort by Price</option>
                                     <option value="asc">Price Ascending</option>
                                     <option value="desc">Price Descending</option>
                                 </select>
                             </div>
                         </div>
                         <div className='mt-4 rounded-2xl p-5'>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 justify-center">
                                 {
                                     foods.map((food) => <FoodCard key={food._id} food={food}></FoodCard>)
                                 }

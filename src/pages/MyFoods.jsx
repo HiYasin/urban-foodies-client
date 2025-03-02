@@ -4,6 +4,7 @@ import axios from 'axios';
 import FoodRow from '../components/MyFoods/FoodRow';
 import Loading from '../components/Loading';
 import EmptyItem from '../components/EmptyItem';
+import { ScrollRestoration } from 'react-router-dom';
 
 const MyFoods = () => {
     const { user } = useAuth();
@@ -22,7 +23,7 @@ const MyFoods = () => {
     return (
         <>
             { foods.length === 0 ? <EmptyItem />:
-                <div className='w-10/12 max-w-screen-lg mx-auto rounded-2xl my-5 shadow-xl bg-base-100 dark:bg-slate-700 p-5'>
+                <div className='w-10/12 max-w-screen-lg mx-auto rounded-2xl my-5 mt-2 shadow-xl bg-base-100 dark:bg-slate-700 p-5'>
                     <div className="overflow-x-auto bg-orange-100 dark:bg-orange-600 dark:bg-opacity-20 rounded-xl p-5">
                         <table className="table">
                             <thead>
@@ -40,6 +41,7 @@ const MyFoods = () => {
                             </tbody>
                         </table>
                     </div>
+                    <ScrollRestoration />
                 </div>
             }
         </>

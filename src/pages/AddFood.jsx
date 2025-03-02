@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import useAuth from '../customHooks/useAuth';
 import Swal from 'sweetalert2';
+import { ScrollRestoration } from 'react-router-dom';
 
 const AddFood = () => {
     const { user } = useAuth();
@@ -42,7 +43,6 @@ const AddFood = () => {
     }
     return (
         <div className='border container m-0 p-0 mx-auto rounded-2xl my-20 shadow-xl  bg-orange-100 dark:bg-orange-600 dark:bg-opacity-50'>
-
             <div className='m-5 md:m-10 lg:m-20'>
                 <h2 className='text-3xl font-bold text-center dark:text-white'>Enter Food Details</h2>
                 <form className='grid md:grid-cols-2 gap-5' onSubmit={handleSubmit}>
@@ -93,6 +93,7 @@ const AddFood = () => {
                     </div>
                 </form>
             </div>
+            <ScrollRestoration />
         </div>
     );
 };

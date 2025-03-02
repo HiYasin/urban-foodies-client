@@ -4,6 +4,7 @@ import axios from 'axios';
 import FoodRow from '../components/MyOrders/FoodRow';
 import Loading from '../components/Loading';
 import EmptyItem from '../components/EmptyItem';
+import { ScrollRestoration } from 'react-router-dom';
 
 const MyOrders = () => {
     const { user } = useAuth();
@@ -46,6 +47,7 @@ const MyOrders = () => {
                                 </tbody>
                             </table>
                         </div>
+                        <ScrollRestoration />
                     </div>
 
             }

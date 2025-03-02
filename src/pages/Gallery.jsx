@@ -13,6 +13,7 @@ import "react-photo-album/rows.css";
 
 import { Slides } from '../data/Slides';
 import Banner from '../components/Gallery/Banner';
+import { ScrollRestoration } from 'react-router-dom';
 const Gallery = () => {
     const [open, setOpen] = useState(false);
     const captionRef = useRef(null);
@@ -29,7 +30,6 @@ const Gallery = () => {
                     //targetRowHeight={150}
                     onClick={({ index: current }) => setIndex(current)}
                 />
-
                 <Lightbox
                     plugins={[Captions, Zoom, Thumbnails]}
                     // open={open}
@@ -42,6 +42,7 @@ const Gallery = () => {
                 >
                 </Lightbox>
             </div>
+            <ScrollRestoration />
         </div>
     );
 };
